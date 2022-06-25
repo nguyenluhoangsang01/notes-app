@@ -18,9 +18,12 @@ const Sidebar = ({ notes, currentNote, setCurrentNoteId, newNote }) => {
         <SidebarNotes key={`${note.id}-${index}`}>
           <Note
             onClick={() => setCurrentNoteId(note.id)}
-            className={note.id === currentNote.id ? "selected-note" : ""}
+            className={`ellipsis ${
+              note.id === currentNote.id ? "selected-note" : ""
+            }`}
+            title={note.body.split("\n")[0]}
           >
-            Note {index + 1}
+            {note.body.split("\n")[0]}
           </Note>
         </SidebarNotes>
       ))}

@@ -8,8 +8,9 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   const [notes, setNotes] = useState(
-    JSON.parse(localStorage.getItem("notes")) || []
+    () => JSON.parse(localStorage.getItem("notes")) || []
   );
+
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
   );
@@ -29,11 +30,19 @@ function App() {
   };
 
   const updateNote = (text) => {
-    setNotes((oldNotes) =>
-      oldNotes.map((oldNote) =>
-        oldNote.id === currentNoteId ? { ...oldNote, body: text } : oldNote
-      )
-    );
+    setNotes((oldNotes) => {
+      const newArray = [];
+
+      for (let i = 0; i < oldNotes.length; i++) {
+        const oldNote = oldNotes[i];
+
+        oldNote.id === currentNoteId
+          ? newArray.unshift({ ...oldNote, body: text })
+          : newArray.push(oldNote);
+      }
+
+      return newArray;
+    });
   };
 
   const findCurrentNote = () =>

@@ -6,8 +6,9 @@ export const SidebarWrapper = styled.section`
 export const SidebarHeader = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 8rem;
+  padding: 0 10%;
 `;
 export const StyledH3 = styled.h3`
   font-size: 2.8rem;
@@ -27,10 +28,15 @@ export const StyledButton = styled.button`
 export const SidebarNotes = styled.div``;
 export const Note = styled.div`
   height: 5rem;
-  text-indent: 2rem;
-  display: flex;
-  align-items: center;
+  line-height: 5rem;
+  text-indent: 10%;
   font-weight: 500;
   font-size: 1.3rem;
   cursor: pointer;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: calc(90%);
+  white-space: nowrap;
 `;
