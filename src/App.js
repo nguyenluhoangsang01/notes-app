@@ -48,6 +48,12 @@ function App() {
   const findCurrentNote = () =>
     notes.find((note) => note.id === currentNoteId) || notes[0];
 
+  const handleRemoveNote = (e, noteId) => {
+    e.stopPropagation();
+
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
+  };
+
   return (
     <div className="App">
       {notes.length > 0 ? (
@@ -68,6 +74,7 @@ function App() {
             currentNote={findCurrentNote()}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
+            onRemoveNote={handleRemoveNote}
           />
           {currentNoteId && notes.length > 0 && (
             <Editor updateNote={updateNote} currentNote={findCurrentNote()} />

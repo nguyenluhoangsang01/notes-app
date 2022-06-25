@@ -25,7 +25,11 @@ export const StyledButton = styled.button`
   width: 30px;
   text-align: center;
 `;
-export const SidebarNotes = styled.div``;
+export const SidebarNotes = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
 export const Note = styled.div`
   height: 5rem;
   line-height: 5rem;
@@ -37,6 +41,18 @@ export const Note = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
-  width: calc(90%);
+  width: calc(100%);
   white-space: nowrap;
+
+  &:hover > button {
+    visibility: visible;
+  }
+`;
+export const DeleteButton = styled.button`
+  cursor: pointer;
+  font-size: 1.3rem;
+  margin-left: 2rem;
+  position: absolute;
+  left: -1.8rem;
+  visibility: hidden;
 `;

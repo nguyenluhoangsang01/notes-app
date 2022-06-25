@@ -1,4 +1,5 @@
 import {
+  DeleteButton,
   Note,
   SidebarHeader,
   SidebarNotes,
@@ -7,7 +8,13 @@ import {
   StyledH3,
 } from "./Sidebar.style";
 
-const Sidebar = ({ notes, currentNote, setCurrentNoteId, newNote }) => {
+const Sidebar = ({
+  notes,
+  currentNote,
+  setCurrentNoteId,
+  newNote,
+  onRemoveNote,
+}) => {
   return (
     <SidebarWrapper>
       <SidebarHeader>
@@ -24,6 +31,10 @@ const Sidebar = ({ notes, currentNote, setCurrentNoteId, newNote }) => {
             title={note.body.split("\n")[0]}
           >
             {note.body.split("\n")[0]}
+
+            <DeleteButton onClick={(e) => onRemoveNote(e, note.id)}>
+              <i className="fa-solid fa-trash-can"></i>
+            </DeleteButton>
           </Note>
         </SidebarNotes>
       ))}
